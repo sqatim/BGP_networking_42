@@ -25,13 +25,13 @@ there are two ways to do this. One is learning through the data plane, and the o
 
         * Multicast: A multicast message is sent to a group of devices that have joined a multicast group. In this case, the sender sends the message to a multicast group address, such as 224.0.0.1, and the message is delivered only to the devices that have joined the group.
 
-2. Control plane (Flood and Learn AKA Bridging):
+2. Data plane (Flood and Learn AKA Bridging):
 
     When a switch receives a packet on an input port, it first checks the destination MAC address of the packet to determine which output port the packet should be forwarded to. If the switch has not previously learned the MAC address of the destination device, it uses a technique called "flood and learn."
     In this technique, the switch floods the incoming packet to all of its output ports, except the input port that the packet was received on. By doing this, the switch ensures that the packet reaches the intended destination device, even if the switch does not yet know the destination device's MAC address.
     As the switch floods the packet, it also learns the source MAC address of the device that sent the packet, and associates that MAC address with the input port on which the packet was received. This allows the switch to update its MAC address table, which maps MAC addresses to input ports, and reduces unnecessary flooding of future packets with the same destination MAC address.
     Once the switch has learned the destination device's MAC address, it no longer needs to flood packets to all output ports. Instead, it forwards subsequent packets with the same destination MAC address directly to the output port associated with that MAC address in its MAC address table.
 
-3. Data plane (EVPN BGP)
+3. Control plane (EVPN BGP)
 
     EVPN BGP is a widely used control plane protocol for VxLAN networks that enables distributed learning of MAC addresses across the network. It is built on top of BGP, which is a well-known and widely used routing protocol. EVPN BGP uses BGP to exchange MAC and IP reachability information, which is then used to build a distributed forwarding table for VxLAN traffic. (for more details, read this [document](#)).
