@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# show info about interface named eth0
+ip addr show eth0
+
+# change ip address of the interface eth0
+ip addr add 10.23.26.52/8 dev eth0
+
+# show eth0 info again to see if it has the ip address set
+ip addr show eth0
